@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %} {% block title %} Chat Room {% endblock title %} {% load static %} {% block stylesheets %}
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" /> {% endblock stylesheets %} {% block content %}
+<div class="page-inner mt--5">
+    <div class="row mt--5 justify-content-center">
+        <div class="card card-round w-100 h-100">
+            <div class="card-header">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Chat</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col col-3">
+                        <div id="user-list" class="list-group">
+                            <a href="" class="list-group-item disabled">
+                                <h4 class="list-group-item-heading">Online</h4>
+                                {# Users go here #}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-9">
+                        <div class="panel panel-info">
+
+                            <div>
+                                <ul id="messages" class="messages">
+                                    {# Messages go here #}
+                                </ul>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <input id="chat-input" type="text" class="form-control input" placeholder="Type your message here ..." maxlength="500">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info btn"
+                                                id="btn-send">
+                                            Send</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+    </div>
+</div>
+
+
+
+{% endblock content %} {% block javascripts %}
+<script>
+    let sessionKey = '{{ request.session.session_key }}';
+    let currentUser = '{{ request.user.username }}';
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment-with-locales.min.js" integrity="sha512-EATaemfsDRVs6gs1pHbvhc6+rKFGv8+w4Wnxk4LmkC0fzdVoyWb+Xtexfrszd1YuUMBEhucNuorkf8LpFBhj6w==" crossorigin="anonymous"></script>
+<script src="{% static 'assets/js/chats/app.js' %}"></script>
+{% endblock javascripts %}
